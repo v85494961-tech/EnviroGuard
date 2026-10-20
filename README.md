@@ -97,6 +97,31 @@ Breadboard and jumper wires - Circuit assembly
 Current-limiting resistors - LED protection
 USB cable - power, programming and serial communication
 
+# Circuit Connection
+## Circuit Connections
+
+The following table documents the pin assignments used in the firmware.
+
+| Component         | Arduino pin |
+|-------------------|-------------|
+| DHT22 data        | D2          |
+| Push button       | D3          |
+| LDR analog output | A0          |
+| Green LED         | D9          |
+| Yellow LED        | D10         |
+| Red LED           | D11         |
+| Buzzer            | D8          |
+| OLED SDA          | A4          |
+| OLED SCL          | A5          |
+| OLED I²C address  | 0x3C        |
+
+## Wiring notes
+
+- The push button uses the Arduino's internal pull-up configuration (`INPUT_PULLUP`).
+- The LDR must be connected in a suitable voltage-divider circuit for analog measurement.
+- Verify the DHT22 pinout and OLED connections before powering the circuit.
+-
+
 
 
 
