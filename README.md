@@ -66,7 +66,7 @@ flowchart TD
     K --> L[alarm_events.csv]
 ```
 # Responsibilities
-# Arduino Uno
+## Arduino Uno
 1. Reads temperature, humidity, and light measurements.
 2. Evaluate configured thresholds.
 3. Determines the system alarm state.
@@ -74,14 +74,14 @@ flowchart TD
 5. Updates the OLED.
 6. Transmits structured sensor data over serial.
 
-# Processing dashboard
+## Processing dashboard
 1. Receives and parses serial data.
 2. Validates measurements and status fields.
 3. Displays metrics and measurements history.
 4. Detects stale data.
 5. Records status transition in a CSV file.
 
-Alarm decisions are made by the Arduino, so the physical alarm system does not depend on the Processing dashboard being open.
+- Alarm decisions are made by the Arduino, so the physical alarm system does not depend on the Processing dashboard being open.
 
 ## Hardware Components
 
@@ -124,7 +124,25 @@ The following table documents the pin assignments used in the firmware.
 - The push button uses the Arduino's internal pull-up configuration (`INPUT_PULLUP`).
 - The LDR must be connected in a suitable voltage-divider circuit for analog measurement.
 - Verify the DHT22 pinout and OLED connections before powering the circuit.
--
+- Check the current requirements of all components before powering from the arduino.
+
+# Software Requirements
+## Development tools
+
+- Arduino IDE
+- Processing IDE in Java mode
+- A laptop with a compatible USB serial connection
+
+## Arduino libraries
+
+- Install the following libraries through the Arduino IDE Library Manager:
+- Adafruit GFX Library
+- Adafruit SSD1306
+- DHT sensor library
+
+# How the System Works
+
+
 
 
 
