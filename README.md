@@ -50,40 +50,20 @@ Validation of incoming measurements and detection of stale dashboard data/
 OLED display for local monitoring, with a push button for switching screens.
 
 # System Architecture
+```mermaid
 flowchart TD
-    ENV["Environment"]
+    A[Environment] --> B[DHT22 Sensor]
+    A --> C[LDR Light Sensor]
+    B --> D[Arduino Uno]
+    C --> D
+    D --> E[OLED Display]
+    D --> F[LEDs and Buzzer]
+    D --> G[USB Serial]
+    G --> H[Processing Dashboard]
+    H --> I[Metrics]
+    H --> J[Graphs]
+    H --> K[Status Events]
+    K --> L[alarm_events.csv]
+```
 
-    DHT["DHT22 Sensor<br/>Temperature & Humidity"]
-    LDR["LDR Sensor<br/>Light Intensity"]
-
-    ARD["Arduino Uno"]
-
-    OLED["OLED Display"]
-    ALERT["LEDs / Buzzer"]
-    USB["USB Serial Communication"]
-
-    DASH["Processing Dashboard"]
-
-    MET["Metrics"]
-    GRAPH["Graphs"]
-    STATUS["Status Events"]
-    CSV["alarm_events.csv"]
-
-    ENV --> DHT
-    ENV --> LDR
-
-    DHT --> ARD
-    LDR --> ARD
-
-    ARD --> OLED
-    ARD --> ALERT
-    ARD --> USB
-
-    USB --> DASH
-
-    DASH --> MET
-    DASH --> GRAPH
-    DASH --> STATUS
-
-    STATUS --> CSV
-
+# System Architecture
