@@ -231,13 +231,94 @@ Important: Close the Arduino Serial Monitor before launching processing. These t
 4. Observe the temperature, humidity, light level, and system state.
 5. Check that the event log is created in the processing sketch's folder
 
-## Verify the system
+## Step 6 - Verify the system
 - Observe normal operation first. Then, using safe and controlled test conditions, verify the configured warning and critical thresholds, sensor-fault handling, and event logging.
 
 # Event logging
 - Processing writes status transitions to alarm_events.csv in the sketch's folder.
 
 - THe event logger contains:
+timestamp, status, temperature_c, humidity_percent,ldr_adc,sensor_ok
+
+- Each record includes a computer-generated timestamp and the measurements available at the time of the transition
+- The logger opens the file in append mode, preserving previous records when the sketch is restarted. It flushes the file after writing each event.
+- The dashboard's recent-event list displays the latest events during the current session. The graph history is stored in memory and resets when Processing restarts.
+- The CSV event log records status transition, not every sensor sample. Continuous measurement logging would be a separate feature for enhancement.
+
+# Engineering Challenges and Solutions
+
+## 1. Resolving the Processing Serial type ambiguity
+- Challenge: During development, Processing reported that the type Serial was ambigous, preventing the dashboard from compiling.
+- Solution: The sketch was updated to use the fully qualified class name processing.serial.Serial for the serial communication, constructor and callback parameter.
+- Engineering lesson: Explicitly qualifying a class name can resolve naming conflicts and make dependancies clearer.
+
+## 2. Handling invalid sensor measurements
+- Challenge: Invalid DHT22 measurements can result in unusable values, including NaN. Using such values in a dashboard or alarm calculation can produce misleading results.
+- Solution: The firmware checks sensor validity, and Processing validates incoming measurements before processing them as valid readings. Invalid measurements are represented by the SENSOR_FAULT state.
+- Engineering lesson - Sensor validation and fault handling parts are important parts of reliable embedded software
+
+## 3. Maintaining a consistent serial data format
+- Challenge: The Arduino and Processing application must agree on the number, order, and meaning of the transmitted fields.
+- Solution: A six-column CSV protocol is used. Processing checks the field count, validates the status and sensor flag, and checks measurements ranges.
+- Engineering lesson: Consistent interfaces and input validation simplify integration between embedded firmware and desktop applications.
+
+## 4. Distinguishing stale data from live measurements
+- Challenge: A desktop application can remain open even when communication with the Arduino has stopped.
+- Solution: Processing tracks when the latest valid data was received. If no new data arrives within the configured seven-second timeout, the dashboard indicates that the data is no longer fresh.
+- Engineering lesson: Monitoring the age of incoming data helps prevent old measurements from being mistaken for current readings.
+
+## 5. Separating alarm decisions from visualization
+- Challenge: Making the physical alarm behaviour dependent on the desktop dashboard would reduce the system's independence.
+- Solution: The Arduino determines the alarm state and controls the LEDs and buzzer. Processing displays the received status and records its transitions.
+- Engineering lesson: Separating embedded control from user-interface responsibilities makes the overall design easier to understand and maintain.
+
+## 6. Preserving important status events
+- Challenge: The recent-event panel is temporary, and its contents dissapear when the dashboard restarts.
+- Solution: Processing writes status transitions to a CSV file opened in append mode, providing a persistent record of events.
+- Engineering lesson: Persistent logging is useful for troubleshooting, evaluating system behavior, and documenting tests.
+
+## 7. Integrating multiple hardware and software components.
+- Challenge: The project combines multiple sensors, an OLED, physical alarms, serial communication, and a graphical application. each part must work with consistent pin assignments and expected behavior.
+- Solution: The firmware uses defined pin assignments and a common serial protocol, while the Processing sketch manages visualization and event logging.
+- Engineering lesson: Hardware/software integration requires systematic testing of individual components as well as the complete system.
+
+# Current Limitations
+- The current event log records status transitions rather than every sensor measurement.
+- Dashboard graph history resets when Processing restarts.
+- The serial port setting may require manual adjustment on dgital comupters.
+- The desktop dashboard requires a USB serial connection to the Arduino.
+- Light measurements are collected, but light-based alarms are disabled in the current configuartion.
+- An OLED initialization failure is reported diagnostically, but the dashboard does not currently receive a dedicated OLED faukt status.
+- Thresholds are configured in the firmware rather than changed dynamically from the dashboard.
+
+# Future Improvements
+Planned improvements include:
+- Improve reporting of individual peripheral failures.
+- Add a configurable threshold system.
+- Add continuous sensor-data logging an optional mode.
+- Develop tools for analyzing long term environmental trends.
+- Add wireless monitoring through an appropriate IoT platform.
+- Improve automated testing of serial parsing and alarm-state transitions.
+- Evaluate additional environmental sensors and use cases.
+
+# Skills Demonstrated
+This project provides practical experience in:
+- Embedded C/C++ programming
+- Arduino microcontroller development.
+- Temperature,humidity, and light sensing.
+- Analog measurements and digital I/O
+- I²C peripheral interfacing
+- Serial communication and and CSv parsing
+- Real-time dashboard development with processing
+- Data visualization and graphing.
+- Sate-based alarm logic
+- Sensor validation and basic fault handling
+- File handling and persistent event logging
+- Hardware/software integration and debugging
+- Technical documentation and version control Github
+  
+
+
 
   
 
