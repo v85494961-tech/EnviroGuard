@@ -140,10 +140,42 @@ The following table documents the pin assignments used in the firmware.
 2. Adafruit SSD1306
 3. DHT sensor library
 
-## How the System Works
+# How the System Works
 ## 1. Sensor acquisition
+- The Arduino reads temperature and relative humidity from the DHT22 and obtains an analog reading from the LDR.
+- The DHT22 measurements are checked for validity before being used for alarm decisions.
 
-the arduino
+## 2. Threshold evaluation
+- The firmware compares valid sensor readings against configured thresholds. It then assigns the appropriate status.
+
+  The current configuration includes:
+  - Warning temperature threshold: 30°C
+  - Critical temperature threshold: 35°C
+  - Low humidity threshold: 25%
+  - High humidity threshold: 75%
+
+## 3. Physical alarms
+The Arduino controls the LEDs and buzzer according to the current state.
+
+- NORMAL: Green LED
+- WARNING: Yellow LED and an intermittent buzzer pattern
+- CRITICAL: Flashing red LED and a faster buzzer pattern
+- SENSOR_FAULT: Red LED to indicate a sensor fault
+
+## 4. Serial Transmission
+- The Arduino transmits sensor data as a six-field, comma-separated row.
+- Processing reads each row, checks the data, and update the dashboard.
+
+## 5. Dashboard visualization
+The Processing interface provides.
+- Temperature metric card
+- Humidity metric card
+- Ambient-light ADC metric card
+- Current system status
+- Recent status events
+- Temperature and humidity history graphs
+- connection-state indication
+
 
 
 
