@@ -83,9 +83,10 @@ flowchart TD
 
 Alarm decisions are made by the Arduino, so the physical alarm system does not depend on the Processing dashboard being open.
 
-# Hardware Components
-# Component                            Purpose
-DHT22
+Hardware                     Components
+Arduino Uno                   Main embedded controller
+DHT22                         Temperature and Humidity measurement
+
 
 
 
