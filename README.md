@@ -176,7 +176,7 @@ The Processing interface provides.
 - Temperature and humidity history graphs
 - Connection-state indication
 
-  ## Alarm States
+# Alarm States
 
 | State | Meaning | Intended indication |
 |---|---|---|
@@ -200,6 +200,47 @@ The Processing interface provides.
 | `ldr_adc` | Light-dependent resistor (LDR) analog-to-digital converter reading. |
 | `status` | Current alarm state. |
 | `sensor_ok` | Indicates whether sensor data is valid: `1` for valid data and `0` for invalid data. |
+
+Important: Close the Arduino Serial Monitor before launching processing. These two applications normally cannot access the same serial port simultaneously.
+
+# Installation and Setup
+
+## Step 1 - Assemble the hardware
+- Connect the Arduino, DHT22, LDR, OLED, LEDs, buzzer, and push button according to the pin table.
+
+## Step 2 - Install Arduino dependancies
+- Open the Arduino IDE and install the required libraries using the Library manager.
+
+## Step 3 - Upload the Arduino firmware
+1. Open EnviroGuard.ino
+2. Select the correct Arduino board and serial port
+3. Compile the sketch
+4. Upload it to the Arduino Uno
+5. Confirm that the hardware operates as expected.
+
+## Step 4 - Configure processing
+1. Open the processing dashboard sketch.
+2. Locate the SERIAL_PORT setting.
+3. Select the correct port as assigned by your Arduino.
+4. Ensure that the baud rate matches the firmware: 9600
+
+## Step 5 - Run the Dashboard
+1. Close Arduino Serial Monitor and other applications using the Arduino serial port.
+2. Start the processing sketch.
+3. Confirm that the dashboard receives data.
+4. Observe the temperature, humidity, light level, and system state.
+5. Check that the event log is created in the processing sketch's folder
+
+## Verify the system
+- Observe normal operation first. Then, using safe and controlled test conditions, verify the configured warning and critical thresholds, sensor-fault handling, and event logging.
+
+# Event logging
+- Processing writes status transitions to alarm_events.csv in the sketch's folder.
+
+- THe event logger contains:
+
+  
+
 
 
 
