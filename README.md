@@ -83,19 +83,23 @@ flowchart TD
 
 Alarm decisions are made by the Arduino, so the physical alarm system does not depend on the Processing dashboard being open.
 
-# Hardware components
-Arduino Uno - Main embedded controller
-128 × 64 I²C OLED display - local measurement display
-DHT22/AM3202 - Temperature and humidity measurement
-Light-dependent resistor(LDR) - Ambient light sensing
-Green LED - Normal operating indication
-Yellow LED - Warning indication
-Red lED - Critical or sensor_fault indication
-Buzzer - Audible warning and critical alerts
-Push button - Switches OLED display screens
-Breadboard and jumper wires - Circuit assembly
-Current-limiting resistors - LED protection
-USB cable - power, programming and serial communication
+## Hardware Components
+
+| Component | Work (Function) |
+|---|---|
+| Arduino Uno | Main embedded controller that processes sensor data and controls the output devices. |
+| 128 × 64 I²C OLED display | Displays temperature, humidity, ambient light levels, and system status. |
+| DHT22/AM3202 | Measures temperature and humidity. |
+| Light-dependent resistor (LDR) | Detects ambient light intensity. |
+| Green LED | Indicates normal operating conditions. |
+| Yellow LED | Indicates a warning condition. |
+| Red LED | Indicates a critical condition or sensor fault. |
+| Buzzer | Provides audible alerts during warning and critical conditions. |
+| Push button | Switches between OLED display screens. |
+| Breadboard and jumper wires | Connect the components and allow circuit assembly without soldering. |
+| Current-limiting resistors | Limit current through the LEDs to prevent damage. |
+| USB cable | Supplies power to the Arduino Uno and enables programming and serial communication. |
+
 
 # Circuit Connection
 ## Circuit Connections
