@@ -65,3 +65,27 @@ flowchart TD
     H --> K[Status Events]
     K --> L[alarm_events.csv]
 ```
+# Responsibilities
+# Arduino Uno
+1. Reads temperature, humidity, and light measurements.
+2. Evaluate configured thresholds.
+3. Determines the system alarm state.
+4. Controls LEDs and buzzer.
+5. Updates the OLED.
+6. Transmits structured sensor data over serial.
+
+# Processing dashboard
+1. Receives and parses serial data.
+2. Validates measurements and status fields.
+3. Displays metrics and measurements history.
+4. Detects stale data.
+5. Records status transition in a CSV file.
+
+Alarm decisions are made by the Arduino, so the physical alarm system does not depend on the Processing dashboard being open.
+
+# Hardware Components
+# Component                            Purpose
+DHT22
+
+
+
