@@ -185,8 +185,21 @@ The Processing interface provides.
 | `CRITICAL` | Critical temperature threshold has been reached | Flashing red LED and faster buzzer |
 | `SENSOR_FAULT` | Sensor readings are invalid or unavailable | Red LED |
 
+# Serial Communication Protocol
+- The Arduino transmits six comma-separated fields at 9600 baud:
+  time_ms,temperature_c,humidity_percent,ldr_adc,status,sensor_ok
 
+- An illustrative row is:
+12500,30.6,61.2,164,WARNING,1
 
+| Field | Description |
+|---|---|
+| `time_ms` | Elapsed time reported by the Arduino, in milliseconds. |
+| `temperature_c` | Temperature in degrees Celsius. |
+| `humidity_percent` | Relative humidity percentage. |
+| `ldr_adc` | Light-dependent resistor (LDR) analog-to-digital converter reading. |
+| `status` | Current alarm state. |
+| `sensor_ok` | Indicates whether sensor data is valid: `1` for valid data and `0` for invalid data. |
 
 
 
