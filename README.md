@@ -136,11 +136,15 @@ The following table documents the pin assignments used in the firmware.
 ## Arduino libraries
 
 - Install the following libraries through the Arduino IDE Library Manager:
-- Adafruit GFX Library
-- Adafruit SSD1306
-- DHT sensor library
+1. Adafruit GFX Library
+2. Adafruit SSD1306
+3. DHT sensor library
 
-# How the System Works
+## How the System Works
+## 1. Sensor acquisition
+
+the arduino
+
 
 
 
