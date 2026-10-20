@@ -65,5 +65,3 @@ flowchart TD
     H --> K[Status Events]
     K --> L[alarm_events.csv]
 ```
-
-# System Architecture
