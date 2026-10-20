@@ -174,7 +174,16 @@ The Processing interface provides.
 - Current system status
 - Recent status events
 - Temperature and humidity history graphs
-- connection-state indication
+- Connection-state indication
+
+  ## Alarm States
+
+| State | Meaning | Intended indication |
+|---|---|---|
+| `NORMAL` | Measurements are within configured limits | Green LED |
+| `WARNING` | A configured warning threshold has been crossed | Yellow LED and intermittent buzzer |
+| `CRITICAL` | Critical temperature threshold has been reached | Flashing red LED and faster buzzer |
+| `SENSOR_FAULT` | Sensor readings are invalid or unavailable | Red LED |
 
 
 
