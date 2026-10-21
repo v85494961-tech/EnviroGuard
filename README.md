@@ -50,8 +50,10 @@ Validation of incoming measurements and detection of stale dashboard data/
 OLED display for local monitoring, with a push button for switching screens.
 
 # Project demonstration
+## Complete Hardware Setup
 ![EnviroGuard Complete Circuit Setup](Images/circuit_setup.jpg)
 
+## OLED Display
 ![EnviroGuard OLED Display](Images/oled_display.jpg)
 
 # System Architecture
