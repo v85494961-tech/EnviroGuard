@@ -64,6 +64,7 @@ The main objectives of the EnviroGuard are to:
 
 # Project Demonstration
 - A short demonstration of the EnviroGuard hardware setup and live OLED sensor readings
+  github/v85494961-tech/EnviroGuard/issues/1
   
 
 # System Architecture
