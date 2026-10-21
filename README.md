@@ -338,8 +338,9 @@ This project provides practical experience in:
 - Technical documentation and version control Github
 
 # Project Structure
-Project Structure
+## Project Structure
 
+```text
 EnviroGuard/
 ├── Images/
 │   ├── circuit_setup.jpg
@@ -347,15 +348,20 @@ EnviroGuard/
 │   ├── dashboard_normal.png
 │   └── dashboard_warning.png
 ├── EnviroGuard.ino
-├── [YourProcessingSketch].pde
+├── YourProcessingSketch.pde
 └── README.md
+```
 
-File descriptions
+### File Descriptions
 
-- "Images/" — Circuit photographs, OLED display photos, and dashboard screenshots.
-- "EnviroGuard.ino" — Arduino firmware for sensor readings, OLED updates, and alarm control.
-- "[YourProcessingSketch].pde" — Processing dashboard source code for live monitoring and alarm event logging.
-- "README.md" — Project documentation, setup instructions, hardware details, and demonstration links.
+- **Images/** — Circuit photographs, OLED display images, and dashboard screenshots.
+- **circuit_setup.jpg** — Photograph of the hardware circuit setup.
+- **oled_display.jpg** — Image of the OLED display showing sensor readings.
+- **dashboard_normal.png** — Screenshot of the dashboard in normal operating mode.
+- **dashboard_warning.png** — Screenshot of the dashboard in warning mode.
+- **EnviroGuard.ino** — Arduino firmware for sensor readings, OLED updates, and alarm control.
+- **YourProcessingSketch.pde** — Processing application for the graphical dashboard and real-time monitoring.
+- **README.md** — Project overview, setup instructions, and documentation.
   
 # Author
 Vincent Panyako Ingoi
