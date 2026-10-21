@@ -56,6 +56,9 @@ OLED display for local monitoring, with a push button for switching screens.
 ## OLED Display
 ![EnviroGuard OLED Display](Images/oled_display.jpg)
 
+## Dashboard - Normal condition
+![EnviroGuard Dashboard Display](Images/dashboard_normal.png)
+
 # System Architecture
 ```mermaid
 flowchart TD
