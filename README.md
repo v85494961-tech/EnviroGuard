@@ -348,7 +348,7 @@ EnviroGuard/
 │   ├── dashboard_normal.png
 │   └── dashboard_warning.png
 ├── EnviroGuard.ino
-├── YourProcessingSketch.pde
+├── EnviGuardDashboard.pde
 └── README.md
 ```
 
