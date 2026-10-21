@@ -36,18 +36,18 @@ The main objectives of the EnviroGuard are to:
 7. Practice integrating electronic hardware with embedded and desktop software.
 
 # Key Features
-Temperature monitoring using the DHT22.
-Relative humidity monitoring.
-Ambient light measurement using an LDR.
-Real-time desktop dashboard developed with processing.
-Temperature and humidity history graph.
-Four system states: NORMAL, WARNING, CRITICAL, and SENSOR_FAULT.
-Physical status indication using three LEDs.
-Buzzer alerts for configured warning and critical conditions.
-Timestamped status-transition logging to CSV.
-USB serial communication at 9600.
-Validation of incoming measurements and detection of stale dashboard data/
-OLED display for local monitoring, with a push button for switching screens.
+- Temperature monitoring using the DHT22.
+- Relative humidity monitoring.
+- Ambient light measurement using an LDR.
+- Real-time desktop dashboard developed with processing.
+- Temperature and humidity history graph.
+- Four system states: NORMAL, WARNING, CRITICAL, and SENSOR_FAULT.
+- Physical status indication using three LEDs.
+- Buzzer alerts for configured warning and critical conditions.
+- Timestamped status-transition logging to CSV.
+- USB serial communication at 9600.
+- Validation of incoming measurements and detection of stale dashboard data/
+- OLED display for local monitoring, with a push button for switching screens.
 
 # Project demonstration
 ## Complete Hardware Setup
