@@ -360,14 +360,14 @@ EnviroGuard/
 - **dashboard_normal.png** — Screenshot of the dashboard in normal operating mode.
 - **dashboard_warning.png** — Screenshot of the dashboard in warning mode.
 - **EnviroGuard.ino** — Arduino firmware for sensor readings, OLED updates, and alarm control.
-- **YourProcessingSketch.pde** — Processing application for the graphical dashboard and real-time monitoring.
+- **EnviroGuardDashboard.pde** — Processing application for the graphical dashboard and real-time monitoring.
 - **README.md** — Project overview, setup instructions, and documentation.
   
 # Author
 Vincent Panyako Ingoi
 
 - Electrical and Communication Engineering student interested in embedded systems, electronics, and IoT.
-- This project was developed as a hands0on learning exercise in integrating embedded hardware, real-time monitoring, and desktop visualization.
+- This project was developed as a hands-on learning exercise in integrating embedded hardware, real-time monitoring, and desktop visualization.
 
 EnviroGuard - Connecting embedded electronics with real-time environmental awareness.
 
