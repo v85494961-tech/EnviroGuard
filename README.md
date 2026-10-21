@@ -8,22 +8,24 @@
 # Table of Contents
 1. Project Objectives
 2. Key Features
-3. System Architecture
-4. Hardware Components
-5. Circuit Connections
-6. Software Requirements
-7. How the System Works
-8. Alarm States
-9. Serial Communication Protocol
-10. Installation and Setup
-11. Event Logging
-12. Engineering Challenges and Solutions
-13. Testing and Verification
-14. Current Limitations
-15. Future Improvements
-16. Skills Demonstrated
-17. Project Structure
-18. Author
+3. Project Demonstration
+4. System Architecture
+5. Responsibilities
+6. Hardware Requirements
+7. Circuit Connections
+8. Software Requirements
+9. How the System Works
+10. Alarm states
+11. Serial Communication Protocol
+12. Installation and Setup
+13. Event Logging
+14. Engineering Challenges and Solutions
+15. Testing and Verification
+16. Current Limitations
+17. Future Improvements
+18. Skills Demonstrated
+19. Project Structure
+20. Author
 
 # Project Objectives
 The main objectives of the EnviroGuard are to:
@@ -33,7 +35,7 @@ The main objectives of the EnviroGuard are to:
 4. Display live measurements and system status on a desktop dashboard.
 5. Visualize recent temperature and humidity measurements.
 6. Record status transition in a persistent CSV event log.
-7. Practice integrating electronic hardware with embedded and desktop software.
+7. Demonstrate integrating electronic hardware with embedded and desktop software.
 
 # Key Features
 - Temperature monitoring using the DHT22.
@@ -62,7 +64,7 @@ The main objectives of the EnviroGuard are to:
 ## Dashboard - Warning Condition
 ![EnviroGuard Dashboard Display](Images/dashboard_warning.png)
 
-# Project Demonstration
+# Video Demonstration
 - A short demonstration of the EnviroGuard hardware setup and live OLED sensor readings
 - github/v85494961-tech/EnviroGuard/issues/1
   
