@@ -305,10 +305,10 @@ Planned improvements include:
 This project provides practical experience in:
 - Embedded C/C++ programming
 - Arduino microcontroller development.
-- Temperature,humidity, and light sensing.
+- Temperature, humidity, and light sensing.
 - Analog measurements and digital I/O
 - I²C peripheral interfacing
-- Serial communication and and CSv parsing
+- Serial communication and and CSV parsing
 - Real-time dashboard development with processing
 - Data visualization and graphing.
 - Sate-based alarm logic
@@ -317,7 +317,13 @@ This project provides practical experience in:
 - Hardware/software integration and debugging
 - Technical documentation and version control Github
   
+# Author
+Vincent Panyako Ingoi
 
+- Electrical and Communication Engineering student interested in embedded systems, electronics, and IoT.
+- This project was developed as a hands0on learning exercise in integrating embedded hardware, real-time monitoring, and desktop visualization.
+
+EnviroGuard - Connecting embedded electronics with real-time environmental awareness.
 
 
   
