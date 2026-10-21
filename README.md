@@ -49,6 +49,11 @@ USB serial communication at 9600.
 Validation of incoming measurements and detection of stale dashboard data/
 OLED display for local monitoring, with a push button for switching screens.
 
+# Project demonstration
+![EnviroGuard Complete Circuit Setup](Images/circuit_setup.jpg)
+
+![EnviroGuard OLED Display](Images/oled_display.jpg)
+
 # System Architecture
 ```mermaid
 flowchart TD
