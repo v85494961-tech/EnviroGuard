@@ -109,7 +109,7 @@ flowchart TD
 |---|---|
 | Arduino Uno | Main embedded controller that processes sensor data and controls the output devices. |
 | 128 × 64 I²C OLED display | Displays temperature, humidity, ambient light levels, and system status. |
-| DHT22/AM3202 | Measures temperature and humidity. |
+| DHT22/AM2302 | Measures temperature and humidity. |
 | Light-dependent resistor (LDR) | Detects ambient light intensity. |
 | Green LED | Indicates normal operating conditions. |
 | Yellow LED | Indicates a warning condition. |
