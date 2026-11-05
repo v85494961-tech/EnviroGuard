@@ -48,7 +48,7 @@ The main objectives of the EnviroGuard are to:
 - Buzzer alerts for configured warning and critical conditions.
 - Timestamped status-transition logging to CSV.
 - USB serial communication at 9600.
-- Validation of incoming measurements and detection of stale dashboard data/
+- Validation of incoming measurements and detection of stale dashboard data
 - OLED display for local monitoring, with a push button for switching screens.
 
 # Project demonstration
