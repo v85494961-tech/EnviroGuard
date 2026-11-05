@@ -1,6 +1,6 @@
 # EnviroGuard
 
-# Real-Time Environmental Monitoring and Alarm System
+## Real-Time Environmental Monitoring and Alarm System
 - An Arduino-based environmental monitoring system with a Live Processing dashboard, sensor visualization, alarm management,and timestamped event logging.
 - EnviroGuard is an embedded systems project developed to monitor environmental conditions using Arduino Uno, a DHT22 temperature and humidity sensor, and a light-dependent resistor (LDR)
 - The system combines embedded C/C++ programming, electronics, serial communication, real-time data visualization, and CSV event logging. The Arduino monitors  the sensors and controls the physical alarms, while a Processing application displays measurements, plots measurements history, and records changes in system status.
