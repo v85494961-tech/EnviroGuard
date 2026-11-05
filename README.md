@@ -257,7 +257,7 @@ Important: Close the Arduino Serial Monitor before launching processing. These t
 # Event logging
 - Processing writes status transitions to alarm_events.csv in the sketch's folder.
 
-- THe event logger contains:
+- The event logger contains:
 timestamp, status, temperature_c, humidity_percent,ldr_adc,sensor_ok
 
 - Each record includes a computer-generated timestamp and the measurements available at the time of the transition
