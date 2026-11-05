@@ -5,7 +5,7 @@
 - EnviroGuard is an embedded systems project developed to monitor environmental conditions using Arduino Uno, a DHT22 temperature and humidity sensor, and a light-dependent resistor (LDR)
 - The system combines embedded C/C++ programming, electronics, serial communication, real-time data visualization, and CSV event logging. The Arduino monitors  the sensors and controls the physical alarms, while a Processing application displays measurements, plots measurements history, and records changes in system status.
 
-# Table of Contents
+## Table of Contents
 1. Project Objectives
 2. Key Features
 3. Project Demonstration
@@ -27,7 +27,7 @@
 19. Project Structure
 20. Author
 
-# Project Objectives
+## Project Objectives
 The main objectives of the EnviroGuard are to:
 1. Monitor Temperature, relative humidity and ambient light.
 2. Detect environmental conditions that cross configured alarm threshold.
@@ -37,7 +37,7 @@ The main objectives of the EnviroGuard are to:
 6. Record status transition in a persistent CSV event log.
 7. Demonstrate integrating electronic hardware with embedded and desktop software.
 
-# Key Features
+## Key Features
 - Temperature monitoring using the DHT22.
 - Relative humidity monitoring.
 - Ambient light measurement using an LDR.
@@ -64,12 +64,12 @@ The main objectives of the EnviroGuard are to:
 ## Dashboard - Warning Condition
 ![EnviroGuard Dashboard Display](Images/dashboard_warning.png)
 
-# Video Demonstration
+## Video Demonstration
 - A short demonstration of the EnviroGuard hardware setup and live OLED sensor readings
 - github/v85494961-tech/EnviroGuard/issues/1
   
 
-# System Architecture
+## System Architecture
 ```mermaid
 flowchart TD
     A[Environment] --> B[DHT22 Sensor]
@@ -85,8 +85,8 @@ flowchart TD
     H --> K[Status Events]
     K --> L[alarm_events.csv]
 ```
-# Responsibilities
-## Arduino Uno
+## Responsibilities
+### Arduino Uno
 1. Reads temperature, humidity, and light measurements.
 2. Evaluate configured thresholds.
 3. Determines the system alarm state.
@@ -94,7 +94,7 @@ flowchart TD
 5. Updates the OLED.
 6. Transmits structured sensor data over serial.
 
-## Processing dashboard
+### Processing dashboard
 1. Receives and parses serial data.
 2. Validates measurements and status fields.
 3. Displays metrics and measurements history.
@@ -103,7 +103,7 @@ flowchart TD
 
 - Alarm decisions are made by the Arduino, so the physical alarm system does not depend on the Processing dashboard being open.
 
-## Hardware Components
+### Hardware Components
 
 | Component | Work (Function) |
 |---|---|
@@ -121,7 +121,7 @@ flowchart TD
 | USB cable | Supplies power to the Arduino Uno and enables programming and serial communication. |
 
 
-# Circuit Connection
+## Circuit Connection
 ## Circuit Connections
 
 The following table documents the pin assignments used in the firmware.
