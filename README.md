@@ -122,7 +122,6 @@ flowchart TD
 
 
 ## Circuit Connection
-## Circuit Connections
 
 The following table documents the pin assignments used in the firmware.
 
@@ -139,33 +138,33 @@ The following table documents the pin assignments used in the firmware.
 | OLED SCL          | A5          |
 | OLED I²C address  | 0x3C        |
 
-## Wiring notes
+### Wiring notes
 
 - The push button uses the Arduino's internal pull-up configuration (`INPUT_PULLUP`).
 - The LDR must be connected in a suitable voltage-divider circuit for analog measurement.
 - Verify the DHT22 pinout and OLED connections before powering the circuit.
 - Check the current requirements of all components before powering from the arduino.
 
-# Software Requirements
-## Development tools
+## Software Requirements
+### Development tools
 
 - Arduino IDE
 - Processing IDE in Java mode
 - A laptop with a compatible USB serial connection
 
-## Arduino libraries
+### Arduino libraries
 
 - Install the following libraries through the Arduino IDE Library Manager:
 1. Adafruit GFX Library
 2. Adafruit SSD1306
 3. DHT sensor library
 
-# How the System Works
-## 1. Sensor acquisition
+## How the System Works
+### 1. Sensor acquisition
 - The Arduino reads temperature and relative humidity from the DHT22 and obtains an analog reading from the LDR.
 - The DHT22 measurements are checked for validity before being used for alarm decisions.
 
-## 2. Threshold evaluation
+### 2. Threshold evaluation
 - The firmware compares valid sensor readings against configured thresholds. It then assigns the appropriate status.
 
   The current configuration includes:
@@ -174,7 +173,7 @@ The following table documents the pin assignments used in the firmware.
   - Low humidity threshold: 25%
   - High humidity threshold: 75%
 
-## 3. Physical alarms
+### 3. Physical alarms
 The Arduino controls the LEDs and buzzer according to the current state.
 
 - NORMAL: Green LED
@@ -182,11 +181,11 @@ The Arduino controls the LEDs and buzzer according to the current state.
 - CRITICAL: Flashing red LED and a faster buzzer pattern
 - SENSOR_FAULT: Red LED to indicate a sensor fault
 
-## 4. Serial Transmission
+### 4. Serial Transmission
 - The Arduino transmits sensor data as a six-field, comma-separated row.
 - Processing reads each row, checks the data, and update the dashboard.
 
-## 5. Dashboard visualization
+### 5. Dashboard visualization
 The Processing interface provides.
 - Temperature metric card
 - Humidity metric card
@@ -196,7 +195,7 @@ The Processing interface provides.
 - Temperature and humidity history graphs
 - Connection-state indication
 
-# Alarm States
+## Alarm States
 
 | State | Meaning | Intended indication |
 |---|---|---|
@@ -205,7 +204,7 @@ The Processing interface provides.
 | `CRITICAL` | Critical temperature threshold has been reached | Flashing red LED and faster buzzer |
 | `SENSOR_FAULT` | Sensor readings are invalid or unavailable | Red LED |
 
-# Serial Communication Protocol
+## Serial Communication Protocol
 - The Arduino transmits six comma-separated fields at 9600 baud:
   time_ms,temperature_c,humidity_percent,ldr_adc,status,sensor_ok
 
@@ -223,38 +222,38 @@ The Processing interface provides.
 
 Important: Close the Arduino Serial Monitor before launching processing. These two applications normally cannot access the same serial port simultaneously.
 
-# Installation and Setup
+## Installation and Setup
 
-## Step 1 - Assemble the hardware
+### Step 1 - Assemble the hardware
 - Connect the Arduino, DHT22, LDR, OLED, LEDs, buzzer, and push button according to the pin table.
 
-## Step 2 - Install Arduino dependancies
+### Step 2 - Install Arduino dependancies
 - Open the Arduino IDE and install the required libraries using the Library manager.
 
-## Step 3 - Upload the Arduino firmware
+### Step 3 - Upload the Arduino firmware
 1. Open EnviroGuard.ino
 2. Select the correct Arduino board and serial port
 3. Compile the sketch
 4. Upload it to the Arduino Uno
 5. Confirm that the hardware operates as expected.
 
-## Step 4 - Configure processing
+### Step 4 - Configure processing
 1. Open the processing dashboard sketch.
 2. Locate the SERIAL_PORT setting.
 3. Select the correct port as assigned by your Arduino.
 4. Ensure that the baud rate matches the firmware: 9600
 
-## Step 5 - Run the Dashboard
+### Step 5 - Run the Dashboard
 1. Close Arduino Serial Monitor and other applications using the Arduino serial port.
 2. Start the processing sketch.
 3. Confirm that the dashboard receives data.
 4. Observe the temperature, humidity, light level, and system state.
 5. Check that the event log is created in the processing sketch's folder
 
-## Step 6 - Verify the system
+### Step 6 - Verify the system
 - Observe normal operation first. Then, using safe and controlled test conditions, verify the configured warning and critical thresholds, sensor-fault handling, and event logging.
 
-# Event logging
+## Event logging
 - Processing writes status transitions to alarm_events.csv in the sketch's folder.
 
 - The event logger contains:
@@ -265,44 +264,44 @@ timestamp, status, temperature_c, humidity_percent,ldr_adc,sensor_ok
 - The dashboard's recent-event list displays the latest events during the current session. The graph history is stored in memory and resets when Processing restarts.
 - The CSV event log records status transition, not every sensor sample. Continuous measurement logging would be a separate feature for enhancement.
 
-# Engineering Challenges and Solutions
+## Engineering Challenges and Solutions
 
-## 1. Resolving the Processing Serial type ambiguity
+### 1. Resolving the Processing Serial type ambiguity
 - Challenge: During development, Processing reported that the type Serial was ambigous, preventing the dashboard from compiling.
 - Solution: The sketch was updated to use the fully qualified class name processing.serial.Serial for the serial communication, constructor and callback parameter.
 - Engineering lesson: Explicitly qualifying a class name can resolve naming conflicts and make dependancies clearer.
 
-## 2. Handling invalid sensor measurements
+### 2. Handling invalid sensor measurements
 - Challenge: Invalid DHT22 measurements can result in unusable values, including NaN. Using such values in a dashboard or alarm calculation can produce misleading results.
 - Solution: The firmware checks sensor validity, and Processing validates incoming measurements before processing them as valid readings. Invalid measurements are represented by the SENSOR_FAULT state.
 - Engineering lesson - Sensor validation and fault handling parts are important parts of reliable embedded software
 
-## 3. Maintaining a consistent serial data format
+### 3. Maintaining a consistent serial data format
 - Challenge: The Arduino and Processing application must agree on the number, order, and meaning of the transmitted fields.
 - Solution: A six-column CSV protocol is used. Processing checks the field count, validates the status and sensor flag, and checks measurements ranges.
 - Engineering lesson: Consistent interfaces and input validation simplify integration between embedded firmware and desktop applications.
 
-## 4. Distinguishing stale data from live measurements
+### 4. Distinguishing stale data from live measurements
 - Challenge: A desktop application can remain open even when communication with the Arduino has stopped.
 - Solution: Processing tracks when the latest valid data was received. If no new data arrives within the configured seven-second timeout, the dashboard indicates that the data is no longer fresh.
 - Engineering lesson: Monitoring the age of incoming data helps prevent old measurements from being mistaken for current readings.
 
-## 5. Separating alarm decisions from visualization
+### 5. Separating alarm decisions from visualization
 - Challenge: Making the physical alarm behaviour dependent on the desktop dashboard would reduce the system's independence.
 - Solution: The Arduino determines the alarm state and controls the LEDs and buzzer. Processing displays the received status and records its transitions.
 - Engineering lesson: Separating embedded control from user-interface responsibilities makes the overall design easier to understand and maintain.
 
-## 6. Preserving important status events
+### 6. Preserving important status events
 - Challenge: The recent-event panel is temporary, and its contents dissapear when the dashboard restarts.
 - Solution: Processing writes status transitions to a CSV file opened in append mode, providing a persistent record of events.
 - Engineering lesson: Persistent logging is useful for troubleshooting, evaluating system behavior, and documenting tests.
 
-## 7. Integrating multiple hardware and software components.
+### 7. Integrating multiple hardware and software components.
 - Challenge: The project combines multiple sensors, an OLED, physical alarms, serial communication, and a graphical application. each part must work with consistent pin assignments and expected behavior.
 - Solution: The firmware uses defined pin assignments and a common serial protocol, while the Processing sketch manages visualization and event logging.
 - Engineering lesson: Hardware/software integration requires systematic testing of individual components as well as the complete system.
 
-# Current Limitations
+## Current Limitations
 - The current event log records status transitions rather than every sensor measurement.
 - Dashboard graph history resets when Processing restarts.
 - The serial port setting may require manual adjustment on dgital comupters.
@@ -311,7 +310,7 @@ timestamp, status, temperature_c, humidity_percent,ldr_adc,sensor_ok
 - An OLED initialization failure is reported diagnostically, but the dashboard does not currently receive a dedicated OLED faukt status.
 - Thresholds are configured in the firmware rather than changed dynamically from the dashboard.
 
-# Future Improvements
+## Future Improvements
 Planned improvements include:
 - Improve reporting of individual peripheral failures.
 - Add a configurable threshold system.
@@ -321,7 +320,7 @@ Planned improvements include:
 - Improve automated testing of serial parsing and alarm-state transitions.
 - Evaluate additional environmental sensors and use cases.
 
-# Skills Demonstrated
+## Skills Demonstrated
 This project provides practical experience in:
 - Embedded C/C++ programming
 - Arduino microcontroller development.
@@ -337,8 +336,8 @@ This project provides practical experience in:
 - Hardware/software integration and debugging
 - Technical documentation and version control Github
 
-# Project Structure
 ## Project Structure
+### Project Structure
 
 ```text
 EnviroGuard/
@@ -363,7 +362,7 @@ EnviroGuard/
 - **EnviroGuardDashboard.pde** — Processing application for the graphical dashboard and real-time monitoring.
 - **README.md** — Project overview, setup instructions, and documentation.
   
-# Author
+## Author
 Vincent Panyako Ingoi
 
 - Electrical and Communication Engineering student interested in embedded systems, electronics, and IoT.
