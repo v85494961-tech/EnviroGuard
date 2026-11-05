@@ -337,7 +337,6 @@ This project provides practical experience in:
 - Technical documentation and version control Github
 
 ## Project Structure
-### Project Structure
 
 ```text
 EnviroGuard/
